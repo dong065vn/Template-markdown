@@ -1,0 +1,178 @@
+# Rule Bases cho AI Content Generation
+# =====================================
+# Các quy tắc này giúp AI luôn bám sát chuẩn khi tạo nội dung
+
+# =============================================================================
+# RULE 1: Format văn bản học thuật (Luận văn, Báo cáo)
+# =============================================================================
+
+academic_document_rules:
+  structure:
+    - "Mỗi chương PHẢI có: Tiêu đề, Mục tiêu, Nội dung, Tiểu kết"
+    - "Đánh số heading: Chương 1, 1.1, 1.1.1 (tối đa 3 cấp)"
+    - "Mỗi đoạn văn 100-200 từ, tránh đoạn quá dài"
+    
+  writing_style:
+    - "Giọng văn học thuật, khách quan, không dùng ngôi thứ nhất"
+    - "Sử dụng câu bị động khi cần"
+    - "Tránh từ ngữ chủ quan: 'rất', 'cực kỳ', 'tuyệt vời'"
+    - "Luôn có trích dẫn khi đề cập số liệu, thông tin"
+    
+  citation:
+    - "Format trích dẫn: [Tác giả, Năm]"
+    - "Số liệu phải có nguồn"
+    - "Hình ảnh, bảng biểu phải có caption và nguồn"
+
+# =============================================================================
+# RULE 2: Format văn bản hành chính (Công văn, Quyết định)
+# =============================================================================
+
+official_document_rules:
+  header_format:
+    - "PHẢI có Quốc hiệu và Tiêu ngữ"
+    - "Tên cơ quan ban hành viết HOA, đậm"
+    - "Số, ký hiệu theo format: Số: .../LOẠI-CQBH"
+    
+  content_format:
+    - "Trích yếu ngắn gọn, không quá 20 từ"
+    - "Nội dung rõ ràng, logic"
+    - "Căn cứ pháp lý (nếu có) phải chính xác"
+    
+  signature_format:
+    - "Chức vụ người ký viết HOA"
+    - "Họ tên đầy đủ, không viết tắt"
+    - "Nơi nhận đầy đủ theo quy định"
+
+# =============================================================================
+# RULE 3: Quy định về Segmentation
+# =============================================================================
+
+segmentation_rules:
+  page_calculation:
+    - "30-50 trang: chia 4-6 sections (~8 trang/section)"
+    - "50-100 trang: chia 5-10 sections (~10 trang/section)"
+    - "100-200 trang: chia 9-17 sections (~12 trang/section)"
+    - "200+ trang: chia 14+ sections (~15 trang/section)"
+    
+  section_structure:
+    - "Mỗi section = 1 chương hoặc 1 phần logic"
+    - "Mỗi section PHẢI độc lập về nội dung"
+    - "Kết thúc section = kết thúc ý"
+    
+  naming_convention:
+    - "section_001.md, section_002.md, ..."
+    - "content_001.md cho nội dung đã generate"
+
+# =============================================================================
+# RULE 4: Prompt Guidelines cho AI
+# =============================================================================
+
+ai_prompt_rules:
+  structure:
+    - "Prompt PHẢI có: Context, Task, Format, Constraints"
+    - "Giới hạn output: ~1500-2000 từ/lần"
+    - "Yêu cầu AI output Markdown thuần"
+    
+  constraints:
+    - "KHÔNG cho phép AI tự ý thêm format đặc biệt"
+    - "KHÔNG cho phép HTML trong output"
+    - "CHỈ dùng Markdown cơ bản: #, ##, **, -, 1."
+    
+  quality_check:
+    - "Output PHẢI có heading structure rõ ràng"
+    - "Mỗi section có ít nhất 3 paragraphs"
+    - "Không có placeholder text: [INSERT], [TODO]"
+
+# =============================================================================
+# RULE 5: Quy định theo Nghị định 30/2020/NĐ-CP
+# =============================================================================
+
+nd30_2020_rules:
+  paper:
+    size: "A4 (210mm x 297mm)"
+    orientation: "Portrait"
+    
+  margins:
+    top: "20-25mm"
+    bottom: "20-25mm"
+    left: "30-35mm"
+    right: "15-20mm"
+    
+  font:
+    name: "Times New Roman"
+    body_size: "13-14pt"
+    heading_size: "13-14pt (đậm)"
+    
+  spacing:
+    line_spacing: "Đơn đến 1.5"
+    paragraph_spacing: "Tối thiểu 6pt"
+    first_line_indent: "1-1.27cm"
+
+# =============================================================================
+# RULE 6: Bộ tài liệu kỹ thuật phần mềm (7 bước - Bộ TT&TT)
+# =============================================================================
+
+tech_docs_framework:
+  step_1_requirement:
+    name: "Xác định yêu cầu (Requirement Analysis)"
+    outputs:
+      - "PRD.md (Product Requirements Document)"
+      - "SRS.md (Software Requirements Specification)"
+      
+  step_2_design:
+    name: "Thiết kế hệ thống (System Design)"
+    outputs:
+      - "HLD.md (High Level Design)"
+      - "LLD.md (Low Level Design)"
+      - "Database Schema"
+      
+  step_3_development:
+    name: "Tài liệu phát triển (Development Doc)"
+    outputs:
+      - "Coding Standards"
+      - "API Documentation"
+      
+  step_4_testing:
+    name: "Tài liệu kiểm thử (Testing Doc)"
+    outputs:
+      - "Test Plan"
+      - "Test Cases"
+      - "Test Report"
+      
+  step_5_packaging:
+    name: "Đóng gói (Packaging)"
+    outputs:
+      - "Build Instructions"
+      - "Release Notes"
+      
+  step_6_deployment:
+    name: "Triển khai (Deployment)"
+    outputs:
+      - "Deployment Guide"
+      - "Installation Manual"
+      
+  step_7_release:
+    name: "Phát hành (Release)"
+    outputs:
+      - "User Manual"
+      - "Training Material"
+
+# =============================================================================
+# RULE 7: Bộ tài liệu pháp lý
+# =============================================================================
+
+legal_docs_framework:
+  contracts:
+    - "Hợp đồng nguyên tắc"
+    - "Hợp đồng triển khai"
+    - "Phụ lục hợp đồng"
+    
+  acceptance:
+    - "Biên bản bàn giao"
+    - "Biên bản nghiệm thu"
+    - "Biên bản thanh lý"
+    
+  other:
+    - "Công văn"
+    - "Tờ trình"
+    - "Quyết định"

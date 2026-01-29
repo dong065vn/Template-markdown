@@ -1,0 +1,26 @@
+# Academic Document Manager (ADM) v1.0
+# Requirements
+
+# Core
+python-docx>=1.1.0          # DOCX processing
+PyMuPDF>=1.23.0             # PDF parsing (fitz)
+Jinja2>=3.1.0               # Template engine
+PyYAML>=6.0                 # YAML config
+mistune>=3.0.0              # Markdown parser
+Pillow>=10.0.0              # Image processing
+
+# GUI
+customtkinter>=5.2.0        # Modern Tkinter UI
+
+# CLI
+click>=8.1.0                # CLI framework
+
+# PDF Export (optional - via HTML)
+weasyprint>=60.0            # HTML to PDF
+
+# Packaging
+pyinstaller>=6.0.0          # Build .exe
+
+# Development
+pytest>=7.4.0               # Testing
+pytest-cov>=4.1.0           # Coverage
