@@ -2,49 +2,51 @@
 description: ADM Convert - Chuyển PDF/DOCX sang Markdown/LaTeX
 ---
 
-# /adm-convert - Convert Documents
+# /adm-convert - Chuyển đổi định dạng
 
-## Mục đích
-Chuyển đổi file PDF hoặc DOCX thành Markdown và LaTeX.
+## Khi nào sử dụng
+- Cần chuyển PDF sang Markdown để edit
+- Cần chuyển DOCX sang Markdown
+- Cần xuất LaTeX từ Markdown
 
-## Cách dùng
+## Workflow
 
-### Convert file cụ thể
+### PDF → Markdown
+```bash
+python main.py convert pdf-to-md --input document.pdf --output document.md
+```
+
+### DOCX → Markdown
+```bash
+python main.py convert docx-to-md --input document.docx --output document.md
+```
+
+### Markdown → LaTeX
+```bash
+python main.py convert md-to-latex --input document.md --output document.tex
+```
+
+## Options
+| Option | Description |
+|--------|-------------|
+| `--input`, `-i` | File đầu vào |
+| `--output`, `-o` | File đầu ra |
+| `--template` | LaTeX template (optional) |
+
+## Ví dụ
+
+### Chuyển luận văn PDF sang Markdown
 ```bash
 cd academic-document-manager
-python main.py convert --file "đường/dẫn/file.pdf"
-python main.py convert --file "đường/dẫn/file.docx"
+python main.py convert pdf-to-md -i "thesis.pdf" -o "thesis.md"
 ```
 
-### Convert từ thư mục input/
+### Chuyển báo cáo sang LaTeX
 ```bash
-# Drop files vào function1/input/ trước
-cd academic-document-manager
-python main.py convert
+python main.py convert md-to-latex -i "report.md" -o "report.tex"
 ```
 
-### Convert folder
-```bash
-cd academic-document-manager
-python main.py convert --folder "đường/dẫn/folder/"
-```
-
-### Options
-```bash
---format latex      # Xuất LaTeX (mặc định)
---format markdown   # Xuất Markdown
---format both       # Xuất cả hai
---split-level 1     # Chia theo H1 (mặc định)
---split-level 2     # Chia theo H2
---max-chars 6000    # Max chars mỗi chunk
-```
-
-## Output
-- `function1/output/{tên_file}/markdown/` - Các file .md
-- `function1/output/{tên_file}/latex/` - Các file .tex + main.tex
-
-## Ví dụ đầy đủ
-```bash
-cd academic-document-manager
-python main.py convert --file thesis.pdf --format both --split-level 1
-```
+## Lưu ý
+- PDF phức tạp có thể cần chỉnh sửa thủ công sau khi convert
+- Hình ảnh trong PDF sẽ được extract ra thư mục riêng
+- LaTeX output theo chuẩn NĐ30/2020

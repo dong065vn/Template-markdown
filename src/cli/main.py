@@ -6,7 +6,7 @@ Main entry point for CLI commands
 
 import click
 
-from . import convert, generate
+from . import convert, generate, regenerate
 
 
 @click.group()
@@ -17,8 +17,9 @@ def cli():
     
     \b
     Functions:
-      adm convert   - Convert PDF/DOCX → Markdown → LaTeX
-      adm generate  - Generate documents from AI content
+      adm convert    - Convert PDF/DOCX → Markdown → LaTeX
+      adm generate   - Generate documents from AI content
+      adm regenerate - AI regenerate original content
     """
     pass
 
@@ -26,6 +27,7 @@ def cli():
 # Register sub-commands
 cli.add_command(convert.convert, name="convert")
 cli.add_command(generate.generate, name="generate")
+cli.add_command(regenerate.regenerate, name="regenerate")
 
 
 @cli.command()

@@ -2,37 +2,71 @@
 description: ADM Merge - Ghép tất cả sections thành 1 file
 ---
 
-# /adm-merge - Merge Documents
+# /adm-merge - Ghép tài liệu
 
-## Mục đích
-Ghép tất cả file DOCX sections thành 1 file hoàn chỉnh.
+## Khi nào sử dụng
+- Đã export xong các sections
+- Muốn ghép thành 1 file hoàn chỉnh
+- Cần file DOCX cuối cùng để nộp
 
-## Cú pháp
+## Commands
+
+### Function 2 (Generate)
 ```bash
-cd academic-document-manager
-python main.py generate merge
+python main.py generate merge --output "final.docx"
+```
+
+### Function 3 (Regenerate)
+```bash
+python main.py regenerate merge --output "final.docx"
 ```
 
 ## Options
-```bash
---output "tên_file.docx"   # Đặt tên file output
-```
-
-## Input yêu cầu
-Các file `.docx` trong `function2/Segmentation/phase4_rendered/docx/`
-
-→ Chạy `/adm-export` trước nếu chưa có
-
-## Output
-`function2/Segmentation/phase5_output/MERGED_document.docx`
+| Option | Description |
+|--------|-------------|
+| `--output`, `-o` | Tên file output |
+| `--project-dir`, `-d` | Thư mục project |
 
 ## Ví dụ
+
+### Merge cơ bản
 ```bash
-cd academic-document-manager
-python main.py generate merge --output "Luan_van_final.docx"
+python main.py generate merge
 ```
 
-## Lưu ý
-- Merge giữ nguyên format NĐ30/2020
-- Giữ nguyên hình ảnh, bảng
-- TOC sẽ được tự động cập nhật
+### Merge với tên tùy chỉnh
+```bash
+python main.py regenerate merge --output "LuanVan_HoanChinh.docx"
+```
+
+## Output
+File được lưu tại:
+- `phase5_output/TenFile.docx`
+
+## Chế độ Merge
+
+### Standard Merge
+- Có page break giữa sections
+- Có mục lục tự động
+- Có đánh số trang
+
+### Seamless Merge (render-sections)
+- KHÔNG có page break
+- KHÔNG có khoảng trắng thừa
+- Sections nối liền mạch
+
+```bash
+# Dùng seamless merge
+python main.py regenerate render-sections --output "Seamless.docx"
+```
+
+## Workflow hoàn chỉnh
+```bash
+# 1. Export
+python main.py generate export --format docx
+
+# 2. Merge
+python main.py generate merge --output "Final.docx"
+
+# Kết quả: function2/Segmentation/phase5_output/Final.docx
+```

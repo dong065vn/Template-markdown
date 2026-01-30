@@ -210,36 +210,11 @@ class MarkdownToDocx:
     
     def _add_formatted_text(self, para, text: str):
         """Thêm text với inline formatting (**bold**, *italic*, ***bold+italic***)"""
-        # Pattern để tìm các phần **bold**, *italic*, ***bold+italic***
-        # Thứ tự: bold+italic trước, rồi bold, rồi italic
-        pattern = r'(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|\*(.+?)\*|([^*]+))'
-        
-        parts = re.findall(pattern, text)
-        
-        if not parts or text == ''.join(p[0] for p in parts if p[0]):
-            # Fallback: không có formatting
-            for match in re.finditer(pattern, text):
-                full, bold_italic, bold, italic, plain = match.groups()
-                
-                if bold_italic:
-                    run = para.add_run(bold_italic)
-                    run.font.bold = True
-                    run.font.italic = True
-                elif bold:
-                    run = para.add_run(bold)
-                    run.font.bold = True
-                elif italic:
-                    run = para.add_run(italic)
-                    run.font.italic = True
-                elif plain:
-                    run = para.add_run(plain)
-                else:
-                    continue
-                
-                run.font.name = FONT_NAME
-                run.font.size = Pt(FONT_SIZE_BODY)
-        else:
-            # Simple fallback without formatting
+        try:
+            from src.templates.markdown_cleaner import apply_markdown_to_paragraph
+            apply_markdown_to_paragraph(para, text, FONT_NAME, FONT_SIZE_BODY)
+        except ImportError:
+            # Fallback nếu không import được
             run = para.add_run(text)
             run.font.name = FONT_NAME
             run.font.size = Pt(FONT_SIZE_BODY)

@@ -2,54 +2,91 @@
 description: ADM Help - Xem tất cả commands
 ---
 
-# /adm-help - All Commands
+# /adm-help - Danh sách Commands
 
-## Mục đích
-Xem danh sách tất cả CLI commands và options.
+## Overview
+Academic Document Manager (ADM) có 3 functions chính:
+- **Function 1**: Convert - Chuyển đổi định dạng
+- **Function 2**: Generate - Tạo tài liệu mới
+- **Function 3**: Regenerate - Tái tạo/format lại
 
-## Xem help chính
+---
+
+## Slash Commands
+
+### Conversion
+| Command | Mô tả |
+|---------|-------|
+| `/adm-convert` | Convert PDF/DOCX → Markdown/LaTeX |
+
+### Generation (Function 2)
+| Command | Mô tả |
+|---------|-------|
+| `/adm-generate` | Tạo tài liệu mới (3 bước) |
+| `/adm-zolo` | Quick start luận văn |
+| `/adm-export` | Export MD → DOCX/PDF |
+| `/adm-merge` | Ghép sections thành 1 file |
+
+### Regeneration (Function 3)
+| Command | Mô tả |
+|---------|-------|
+| `/adm-regenerate` | Tái tạo từ file PDF/DOCX gốc |
+
+### Utilities
+| Command | Mô tả |
+|---------|-------|
+| `/adm-renew` | Reset phases để làm mới |
+| `/adm-info` | Thông tin hệ thống |
+| `/adm-help` | Xem danh sách này |
+
+---
+
+## CLI Commands
+
+### Main
 ```bash
-cd academic-document-manager
-python main.py --help
+python main.py convert     # Function 1
+python main.py generate    # Function 2
+python main.py regenerate  # Function 3
+python main.py gui         # GUI
+python main.py info        # System info
 ```
 
-## Xem help từng command
+### Generate Subcommands
 ```bash
-python main.py convert --help
-python main.py generate --help
-python main.py generate init --help
-python main.py generate export --help
-python main.py generate merge --help
+adm generate init --name "Name" --type thesis|report|paper
+adm generate sections
+adm generate export --format docx|pdf|all
+adm generate merge --output "final.docx"
+adm generate renew --phase all|content|rendered|output
 ```
+
+### Regenerate Subcommands
+```bash
+adm regenerate init --file "input.pdf|docx"
+adm regenerate export --format docx|pdf|text|all
+adm regenerate merge --output "final.docx"
+adm regenerate scan
+adm regenerate render-sections --output "final.docx"
+adm regenerate status
+adm regenerate renew --phase all|content|rendered|output
+```
+
+---
 
 ## Quick Reference
 
-### Function 1: Convert
-```bash
-python main.py convert --file "file.pdf"
-python main.py convert --folder "folder/"
-python main.py convert --format latex
+### Tạo luận văn mới (F2)
+```
+/adm-generate hoặc /adm-zolo
 ```
 
-### Function 2: Generate
-```bash
-python main.py generate init --name "Tên" --type thesis --pages 80
-python main.py generate sections
-python main.py generate export --format all
-python main.py generate merge
+### Chuẩn hóa file cũ (F3)
+```
+/adm-regenerate
 ```
 
-### Utilities
-```bash
-python main.py info      # System info
-python main.py gui       # Launch GUI
-python main.py --version # Version
+### Convert định dạng (F1)
 ```
-
-## Slash Commands
-- `/adm-convert` - Convert PDF/DOCX
-- `/adm-generate` - Generate workflow
-- `/adm-zolo` - Quick start
-- `/adm-export` - Export DOCX/PDF
-- `/adm-merge` - Merge files
-- `/adm-info` - System info
+/adm-convert
+```

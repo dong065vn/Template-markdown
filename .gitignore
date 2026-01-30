@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific - Output files
+function2/Segmentation/phase4_rendered/
+function2/Segmentation/phase5_output/
+function3/Segmentation/phase4_rendered/
+function3/Segmentation/phase5_output/
+
+# Temp files
+*.tmp
+*.temp
+temp_sections/
+
+# Logs
+*.log
+
+# Test outputs
+test_output/
+.pytest_cache/
+
+# Build
+*.exe
+*.spec.bak

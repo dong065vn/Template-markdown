@@ -2,40 +2,93 @@
 description: ADM ZOLO - Khởi tạo luận văn siêu nhanh
 ---
 
-# /adm-zolo - ZOLO Mode
+# /adm-zolo - Quick Start Luận văn
 
-## Mục đích
-Khởi tạo project luận văn/báo cáo chỉ với 1 lệnh.
+## Khi nào sử dụng
+- Muốn tạo nhanh cấu trúc luận văn
+- Không cần config chi tiết
+- Bắt đầu viết ngay
 
-## Cú pháp
+## Cách dùng
+
+### Bước 1: Init nhanh
 ```bash
-cd academic-document-manager
-python main.py generate init --name "Tên" --type thesis --pages 80
-python main.py generate sections
+python main.py generate init --name "Tên luận văn" --type thesis --pages 80
 ```
 
-## Thesis 80 trang
-```bash
-cd academic-document-manager
-python main.py generate init --name "Luận văn tốt nghiệp" --type thesis --pages 80
-python main.py generate sections
+### Bước 2: Structure tự động tạo
+```
+function2/Segmentation/
+├── phase1_init/config.yaml
+├── phase2_sections/
+├── phase3_content/      ← VIẾT Ở ĐÂY
+├── phase4_rendered/
+└── phase5_output/
 ```
 
-## Report 30 trang
-```bash
-cd academic-document-manager
-python main.py generate init --name "Báo cáo thực tập" --type report --pages 30
-python main.py generate sections
+### Bước 3: Viết content
+Tạo files trong `phase3_content/`:
+```
+01_mo_dau.md
+02_co_so_ly_thuyet.md
+03_phuong_phap.md
+04_ket_qua.md
+05_ket_luan.md
 ```
 
-## Sau khi chạy
-1. Mở `function2/Segmentation/phase2_sections/`
-2. Xem các file `section_XXX.md` - đây là outline
-3. Dùng AI để viết content theo outline
-4. Lưu content vào `phase3_content/`
-5. Chạy `/adm-export` để xuất file
+### Bước 4: Export & Merge
+```bash
+python main.py generate export --format docx
+python main.py generate merge --output "LuanVan.docx"
+```
+
+## Template Luận văn
+
+### Cấu trúc chuẩn
+```markdown
+# CHƯƠNG 1: MỞ ĐẦU
+
+## 1.1 Đặt vấn đề
+
+## 1.2 Mục tiêu nghiên cứu
+
+## 1.3 Phạm vi nghiên cứu
+
+---
+
+# CHƯƠNG 2: CƠ SỞ LÝ THUYẾT
+
+## 2.1 Tổng quan
+
+## 2.2 Các nghiên cứu liên quan
+
+---
+
+# CHƯƠNG 3: PHƯƠNG PHÁP
+
+## 3.1 Phương pháp nghiên cứu
+
+## 3.2 Công cụ sử dụng
+
+---
+
+# CHƯƠNG 4: KẾT QUẢ
+
+## 4.1 Kết quả đạt được
+
+## 4.2 Đánh giá
+
+---
+
+# CHƯƠNG 5: KẾT LUẬN
+
+## 5.1 Kết luận
+
+## 5.2 Hướng phát triển
+```
 
 ## Tips
-- Pages 50-80: Luận văn thạc sĩ
-- Pages 100+: Luận văn tiến sĩ
-- Pages 20-30: Báo cáo, tiểu luận
+- Mỗi chương = 1 file .md
+- Đặt tên với prefix số: 01_, 02_...
+- Dùng `---` để chia phần
+- **Bold** cho từ khóa quan trọng

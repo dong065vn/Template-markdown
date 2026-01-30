@@ -1,0 +1,33 @@
+document_type: report
+sections:
+- id: cover
+  pages: 3
+  status: pending
+  title: Trang bìa
+  type: front
+- id: toc
+  pages: 3
+  status: pending
+  title: Mục lục
+  type: front
+- id: intro
+  pages: 8
+  status: pending
+  title: Giới thiệu
+  type: main
+- id: main
+  pages: 53
+  status: pending
+  title: Nội dung chính
+  type: main
+- id: conclusion
+  pages: 8
+  status: pending
+  title: Kết luận
+  type: main
+- id: references
+  pages: 5
+  status: pending
+  title: Tài liệu tham khảo
+  type: back
+total_pages: 80

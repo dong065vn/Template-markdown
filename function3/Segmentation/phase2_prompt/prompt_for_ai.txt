@@ -1,0 +1,211 @@
+Bạn là AI chuyên format lại văn bản. 
+Nhiệm vụ: Chuyển đổi nội dung sau thành Markdown thuần túy.
+
+QUY TẮC QUAN TRỌNG:
+1. KHÔNG thêm, bớt hay sửa đổi nội dung gốc
+2. KHÔNG sáng tạo thêm thông tin mới
+3. CHỈ format lại thành Markdown chuẩn
+4. Giữ nguyên cấu trúc heading, list, paragraph
+5. Sửa các lỗi format nhưng giữ nguyên nghĩa
+
+Tiêu đề gốc: Word Document
+Tác giả: 
+
+NỘI DUNG GỐC:
+================
+ĐỀ CƯƠNG THỰC TẬP SINH VIÊN HỆ THỐNG EDGE COMPUTING VÀ CLOUD SERVICES (DÀNH CHO 01 SINH VIÊN)
+
+
+# I. Mục tiêu tổng quát
+
+
+Hiểu khái niệm và kiến trúc Edge Computing & Cloud Services.
+
+Biết vai trò của Edge trong hệ thống IoT, AI, và Cloud.
+
+Thực hành cấu hình cơ bản thiết bị edge, kết nối cloud demo hoặc mô phỏng.
+
+Làm việc theo hướng dẫn, viết báo cáo kỹ thuật và thuyết trình kết quả.
+
+
+# II. Thời gian: 6 tuần
+
+
+
+# III. Phân công cho 1 sinh viên (kiêm nhiệm)
+
+
+Sinh viên thực hiện đầy đủ các nhóm nhiệm vụ sau (tương ứng các vai trò trong đề cương gốc):
+
+
+## 1) Điều phối & tổng hợp
+
+
+Theo dõi tiến độ theo tuần, tổng hợp kết quả từng giai đoạn, chuẩn bị nội dung thuyết trình.
+
+Kết quả mong đợi: Báo cáo tổng hợp + Slide.
+
+
+## 2) Kỹ thuật mạng
+
+
+Setup 1 số mô hình Network Local.
+
+Kết nối Cloud ↔ Edge.
+
+Kết quả mong đợi: Hướng dẫn kết nối Edge ↔ Cloud.
+
+
+## 3) Kỹ thuật hệ thống
+
+
+Config hệ thống OS.
+
+Config Platform: Cloud Edge, Local Edge, Cloud Controller Wifi.
+
+Kết quả mong đợi: Logbook cài đặt.
+
+
+## 4) Cloud (trainer)
+
+
+Nghiên cứu mô hình cloud (IaaS/PaaS), thử tạo instance miễn phí (AWS/Azure).
+
+Kết quả mong đợi: Tài khoản + cấu hình mẫu.
+
+
+## 5) Documentation & testing
+
+
+Ghi chép quy trình, kiểm thử, chụp hình minh họa, viết báo cáo.
+
+Kết quả mong đợi: Báo cáo kỹ thuật hoàn chỉnh.
+
+
+# IV. Nội dung chi tiết từng giai đoạn
+
+
+
+## Tuần 1–2: Lý thuyết cơ bản
+
+
+Mục tiêu: Hiểu hệ thống tổng thể trước khi động vào thực hành.
+
+Nội dung:
+
+Khái niệm Cloud Computing, Edge Computing, Fog Computing.
+
+Mô hình dịch vụ: IaaS – PaaS – SaaS.
+
+Sự khác biệt giữa Cloud và Edge.
+
+Các ví dụ thực tế: Digital signage, order app, smart campus.
+
+Đầu ra: Slide "Tổng quan Edge & Cloud".
+
+
+## Tuần 3: Làm quen thiết bị Edge
+
+
+Thiết bị có thể dùng:
+
+WENet Services Point
+
+Kết nối mạng LAN/Wi-Fi, SSH remote.
+
+Cấu hình thời gian, IP tĩnh, cập nhật hệ thống.
+
+Cài thử Docker.
+
+Đầu ra: Logbook cấu hình + video ngắn minh họa SSH/Edge hoạt động.
+
+
+## Tuần 4–5: Thực hành theo mô hình WENet Cloud–Edge
+
+
+Mục tiêu:
+
+Giúp sinh viên hiểu luồng hoạt động thực tế của hệ thống Edge–Cloud trong môi trường: Smart Campus, Digital Signage, Order App, Event App, Tour App.
+
+Biết cấu hình thiết bị Edge, truyền dữ liệu lên Cloud Edge, quan sát tương tác người dùng (qua smartphone hoặc màn hình signage).
+
+Làm quen với cách ứng dụng edge node trong hệ thống phân tán.
+
+Bài thực hành mẫu:
+
+
+### Mẫu bài thực hành 1: Digital Signage thông minh
+
+
+Mục tiêu: Hiểu cách edge xử lý và phân phối nội dung hiển thị mà không phụ thuộc hoàn toàn vào cloud.
+
+Công việc chi tiết:
+
+Cấu hình một Edge node (WENet Service Point).
+
+Tạo playlist video / hình ảnh (HTML).
+
+Cloud chỉ gửi lịch hiển thị hoặc nội dung cập nhật định kỳ.
+
+Khi mất kết nối cloud, Edge vẫn hiển thị nội dung.
+
+
+### Mẫu bài thực hành 2: Smartphone Interactive Display
+
+
+Mục tiêu: Trải nghiệm cách người dùng smartphone tương tác với thiết bị edge.
+
+
+### Mẫu bài thực hành 3: Smart Campus Dashboard
+
+
+Mục tiêu: Xây dựng bảng điều khiển thông minh (dashboard) hiển thị dữ liệu từ các Edge node trong khuôn viên (phòng học, cổng ra vào).
+
+Các bài thực hành tương tự:
+
+Event App
+
+Tour App
+
+Order App
+
+Đầu ra: Báo cáo kiến trúc hệ thống + Biểu đồ kết nối Edge-Cloud + Nguyên lý vận hành.
+
+
+## Tuần 6: Tổng kết & đánh giá
+
+
+Công việc:
+
+Chuẩn bị slide thuyết trình (10–15 phút).
+
+Báo cáo kỹ thuật.
+
+Nêu khó khăn, hướng cải tiến.
+
+Đầu ra cuối cùng:
+
+Báo cáo (10–15 trang).
+
+Slide trình bày.
+
+Video demo hoặc hình ảnh kết quả.
+
+
+# V. Công cụ và nền tảng khuyến nghị
+
+
+
+# VI. Kết quả mong đợi
+
+
+Sinh viên hiểu khái niệm, kiến trúc và vai trò của Edge & Cloud.
+
+Biết cài đặt, cấu hình thiết bị Edge cơ bản.
+
+Biết kết nối Edge ↔ Cloud demo qua platform.
+
+Có sản phẩm demo + báo cáo kỹ thuật.
+================
+
+Hãy xuất ra file Markdown đã được format lại, giữ nguyên 100% nội dung gốc.

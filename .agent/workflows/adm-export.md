@@ -2,46 +2,66 @@
 description: ADM Export - Xuất Markdown ra DOCX/PDF
 ---
 
-# /adm-export - Export Documents
+# /adm-export - Export tài liệu
 
-## Mục đích
-Chuyển đổi các file Markdown trong `phase3_content/` thành DOCX và PDF chuẩn NĐ30/2020.
+## Khi nào sử dụng
+- Đã viết xong content Markdown
+- Cần xuất ra DOCX hoặc PDF
+- Muốn xuất nhiều format cùng lúc
 
-## Cú pháp
+## Commands
+
+### Function 2 (Generate)
 ```bash
-cd academic-document-manager
-python main.py generate export --format all
+python main.py generate export --format docx|pdf|all
+```
+
+### Function 3 (Regenerate)
+```bash
+python main.py regenerate export --format docx|pdf|text|all
 ```
 
 ## Options
+| Format | Output |
+|--------|--------|
+| `docx` | File Word (.docx) |
+| `pdf` | File PDF |
+| `text` | File văn bản thuần (.txt) |
+| `all` | Tất cả các format |
+
+## Ví dụ
+
+### Export DOCX
 ```bash
---format docx    # Chỉ DOCX
---format pdf     # Chỉ PDF
---format all     # Cả hai (khuyến nghị)
+python main.py generate export --format docx
 ```
 
-## Input yêu cầu
-Files `.md` trong `function2/Segmentation/phase3_content/`
+### Export tất cả
+```bash
+python main.py regenerate export --format all
+```
 
-## Output
-- `phase4_rendered/docx/` - Các file DOCX riêng lẻ
-- `phase4_rendered/pdf/` - Các file PDF riêng lẻ
+## Output Structure
+```
+phase4_rendered/
+├── docx/
+│   ├── section_01.docx
+│   └── section_02.docx
+├── pdf/
+│   └── section_01.pdf
+└── text/
+    └── section_01.txt
+```
 
-## Sau export, chạy merge
+## Sau khi export
+Chạy `merge` để ghép thành 1 file:
 ```bash
 python main.py generate merge
+# hoặc
+python main.py regenerate merge
 ```
-→ Ghép tất cả thành 1 file `MERGED_document.docx`
 
-## Ví dụ đầy đủ
-```bash
-cd academic-document-manager
-
-# Export
-python main.py generate export --format all
-
-# Merge
-python main.py generate merge
-
-# Kết quả: phase5_output/MERGED_document.docx
-```
+## Lưu ý
+- PDF cần cài `weasyprint`: `pip install weasyprint`
+- Format theo chuẩn NĐ30/2020
+- Bold/Italic được render đúng trong DOCX

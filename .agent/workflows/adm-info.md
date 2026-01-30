@@ -2,35 +2,48 @@
 description: ADM Info - Xem thông tin hệ thống
 ---
 
-# /adm-info - System Info
+# /adm-info - System Information
 
-## Mục đích
-Xem thông tin về Python, dependencies và trạng thái hệ thống.
-
-## Cú pháp
+## Cách sử dụng
 ```bash
-cd academic-document-manager
 python main.py info
 ```
 
-## Output hiển thị
+## Thông tin hiển thị
+
+### Version
+- ADM version
 - Python version
-- OS
-- Current working directory
-- Dependencies status (✅ hoặc ❌)
+- Dependencies versions
 
-## Dependencies cần có
-```
-✅ python-docx   - Xử lý DOCX
-✅ PyMuPDF       - Parse PDF
-✅ customtkinter - GUI
-✅ mistune       - Parse Markdown
-✅ PyYAML        - Config files
-✅ click         - CLI framework
-```
+### Configuration
+- Working directory
+- Default output formats
+- Template settings
 
-## Cài đặt nếu thiếu
+### Paths
+- `function1/` - Convert logic
+- `function2/` - Generate logic
+- `function3/` - Regenerate logic
+- `src/templates/` - Processors
+
+### Dependencies Status
+| Package | Purpose |
+|---------|---------|
+| python-docx | DOCX manipulation |
+| PyMuPDF | PDF parsing |
+| mistune | Markdown parsing |
+| PyYAML | Config files |
+| click | CLI framework |
+| customtkinter | GUI |
+| weasyprint | PDF export (optional) |
+
+## Check Dependencies
 ```bash
-cd academic-document-manager
-pip install -r requirements.txt
+python -c "import docx; import fitz; import mistune; print('OK')"
 ```
+
+## Format Standards (NĐ30/2020)
+- Font: Times New Roman 14pt
+- Margins: Top/Bottom 2cm, Left 3cm, Right 1.5cm
+- Page: A4 (21x29.7cm)

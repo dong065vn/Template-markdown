@@ -2,59 +2,89 @@
 description: ADM Generate - Tạo tài liệu từ AI content
 ---
 
-# /adm-generate - Generate Documents
+# /adm-generate - Tạo tài liệu mới
 
-## Mục đích
-Tạo luận văn, báo cáo từ AI content theo workflow 3 bước.
+## Khi nào sử dụng
+- Tạo luận văn/báo cáo mới
+- Có outline và cần tạo structure
+- Muốn AI giúp viết nội dung
 
-## Workflow 3 Bước
+## Workflow 3 bước
 
 ### Bước 1: Init Project
 ```bash
-cd academic-document-manager
-python main.py generate init --name "Tên luận văn" --type thesis --pages 80
+python main.py generate init --name "Tên project" --type thesis|report|paper
 ```
 
-Options:
-- `--type thesis` (luận văn) hoặc `--type report` (báo cáo)
-- `--pages 80` số trang dự kiến
-- `--author "Tên tác giả"`
+**Options:**
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--name`, `-n` | Tên project | Required |
+| `--type`, `-t` | Loại tài liệu | thesis |
+| `--pages`, `-p` | Số trang ước tính | 80 |
+| `--project-dir`, `-d` | Thư mục | function2/Segmentation |
 
-### Bước 2: Generate Sections
-```bash
-python main.py generate sections
+### Bước 2: Viết Content
+1. Mở thư mục `phase3_content/`
+2. Tạo file `.md` cho mỗi section
+3. Viết nội dung Markdown
+
+**Ví dụ structure:**
 ```
-→ Tạo các file outline trong `phase2_sections/`
+phase3_content/
+├── 01_gioi_thieu.md
+├── 02_co_so_ly_thuyet.md
+├── 03_phuong_phap.md
+└── 04_ket_luan.md
+```
 
 ### Bước 3: Export & Merge
 ```bash
-# Sau khi AI viết content vào phase3_content/
+# Export ra DOCX/PDF
 python main.py generate export --format all
-python main.py generate merge
+
+# Ghép thành 1 file
+python main.py generate merge --output "TenFile.docx"
 ```
 
-## Output
-- `function2/Segmentation/phase1_init/` - PRD + config
-- `function2/Segmentation/phase2_sections/` - Outlines
-- `function2/Segmentation/phase3_content/` - (bạn tạo MD ở đây)
-- `function2/Segmentation/phase4_rendered/` - DOCX + PDF
-- `function2/Segmentation/phase5_output/` - MERGED file
+## Commands chi tiết
 
-## Ví dụ đầy đủ
+| Command | Mô tả |
+|---------|-------|
+| `generate init` | Tạo project structure |
+| `generate sections` | Tạo section outlines |
+| `generate export` | Export MD → DOCX/PDF |
+| `generate merge` | Ghép sections |
+| `generate renew` | Reset phases |
+
+## Ví dụ hoàn chỉnh
+
 ```bash
-cd academic-document-manager
+# 1. Init
+python main.py generate init --name "Báo cáo thực tập" --type report
 
-# Bước 1
-python main.py generate init --name "Luận văn tốt nghiệp" --type thesis --pages 80
+# 2. Viết content vào phase3_content/
 
-# Bước 2
-python main.py generate sections
+# 3. Export
+python main.py generate export --format docx
 
-# [Dùng AI viết content, lưu vào phase3_content/]
-
-# Bước 3
-python main.py generate export --format all
-python main.py generate merge
-
-# Done! File ở phase5_output/MERGED_document.docx
+# 4. Merge
+python main.py generate merge --output "BaoCao_Final.docx"
 ```
+
+## Project Structure
+```
+function2/Segmentation/
+├── phase1_init/          # Config
+├── phase2_sections/      # Section outlines
+├── phase3_content/       # Markdown files ← VIẾT Ở ĐÂY
+├── phase4_rendered/      # DOCX/PDF output
+│   ├── docx/
+│   └── pdf/
+└── phase5_output/        # Final merged file
+```
+
+## Tips
+- Dùng `/adm-zolo` để quick start
+- Mỗi file MD = 1 section trong output
+- Files được sắp xếp theo tên (01_, 02_, ...)

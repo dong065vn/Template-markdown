@@ -346,6 +346,60 @@ def merge_docx_folder(folder_path: str, output_file: str,
     return merger.save()
 
 
+def merge_docx_seamless(input_files: List[str], output_file: str) -> str:
+    """
+    Merge nhiều file DOCX KHÔNG có page break và khoảng trắng
+    
+    Args:
+        input_files: List các file DOCX cần merge
+        output_file: Đường dẫn file output
+    
+    Returns:
+        Đường dẫn file đã merge
+    
+    Example:
+        >>> merge_docx_seamless(
+        ...     ['section_001.docx', 'section_002.docx'],
+        ...     'MERGED_seamless.docx'
+        ... )
+    """
+    merger = DocxMerger(output_file)
+    
+    # Merge without page breaks or TOC
+    merger.merge_files(input_files, add_page_breaks=False)
+    
+    return merger.save()
+
+
+def merge_docx_folder_seamless(folder_path: str, output_file: str,
+                                pattern: str = "*.docx") -> str:
+    """
+    Merge tất cả file DOCX trong folder KHÔNG có page break
+    
+    Args:
+        folder_path: Đường dẫn folder chứa files
+        output_file: Đường dẫn file output
+        pattern: Pattern filter (default: *.docx)
+    
+    Returns:
+        Đường dẫn file đã merge
+    """
+    folder = Path(folder_path)
+    if not folder.exists():
+        raise FileNotFoundError(f"Folder not found: {folder_path}")
+    
+    files = sorted(folder.glob(pattern), key=lambda x: x.name)
+    
+    if not files:
+        raise ValueError(f"No files matching '{pattern}' in {folder_path}")
+    
+    print(f"Found {len(files)} files to merge (seamless):")
+    for f in files:
+        print(f"  - {f.name}")
+    
+    return merge_docx_seamless([str(f) for f in files], output_file)
+
+
 if __name__ == "__main__":
     import argparse
     
